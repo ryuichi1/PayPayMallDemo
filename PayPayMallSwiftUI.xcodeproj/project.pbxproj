@@ -159,6 +159,7 @@
 				0DD5C7F827C3F6D500F8D994 /* Sources */,
 				0DD5C7F927C3F6D500F8D994 /* Frameworks */,
 				0DD5C7FA27C3F6D500F8D994 /* Resources */,
+				0DD5C83E27C3FA8500F8D994 /* Swift Format */,
 			);
 			buildRules = (
 			);
@@ -301,6 +302,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DD5C83E27C3FA8500F8D994 /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DD5C7F827C3F6D500F8D994 /* Sources */ = {

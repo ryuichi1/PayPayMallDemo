@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ItemRankingListView: View {
     let hasPmallLabel: Bool
 
@@ -29,7 +28,7 @@ struct ItemRankingListView: View {
             .padding(.leading, 4)
         }
     }
-    
+
     fileprivate func ItemView(rank: Int, hasPmallLabel: Bool) -> some View {
         return HStack(alignment: .top) {
             ImageView(rank: rank)
@@ -40,7 +39,7 @@ struct ItemRankingListView: View {
                             .resizable()
                             .frame(width: 30, height: 10)
                     }
-                    
+
                     Text("タンスのゲン")
                         .font(.caption2)
                         .foregroundColor(.gray)
@@ -55,7 +54,7 @@ struct ItemRankingListView: View {
             }
         }
     }
-    
+
     var body: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 4)
@@ -68,7 +67,7 @@ struct ItemRankingListView: View {
                         print("tapped category name")
                     }
                 Spacer()
-                ForEach((1...3), id: \.self) { num in
+                ForEach(1 ... 3, id: \.self) { num in
                     ItemView(rank: num, hasPmallLabel: hasPmallLabel)
                         .onTapGesture {
                             print("tapped item view")
@@ -84,7 +83,7 @@ struct ItemRankingListView: View {
                             .foregroundColor(.white)
                     }
                 }
-                
+
             }.padding(16)
         }
     }
@@ -93,7 +92,7 @@ struct ItemRankingListView: View {
 struct ItemRankingListView_Previews: PreviewProvider {
     static var previews: some View {
         ItemRankingListView(hasPmallLabel: true)
-        
+
         ItemRankingListView(hasPmallLabel: false)
     }
 }
