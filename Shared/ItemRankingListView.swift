@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemRankingListView: View {
     let hasPmallLabel: Bool
 
-    fileprivate func ImageView(rank: Int) -> some View {
+    fileprivate func imageView(rank: Int) -> some View {
         return ZStack(alignment: .topLeading) {
             Image("item1")
                 .resizable()
@@ -29,9 +29,9 @@ struct ItemRankingListView: View {
         }
     }
 
-    fileprivate func ItemView(rank: Int, hasPmallLabel: Bool) -> some View {
+    fileprivate func itemView(rank: Int, hasPmallLabel: Bool) -> some View {
         return HStack(alignment: .top) {
-            ImageView(rank: rank)
+            imageView(rank: rank)
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 4) {
                     if hasPmallLabel {
@@ -68,7 +68,7 @@ struct ItemRankingListView: View {
                     }
                 Spacer()
                 ForEach(1 ... 3, id: \.self) { num in
-                    ItemView(rank: num, hasPmallLabel: hasPmallLabel)
+                    itemView(rank: num, hasPmallLabel: hasPmallLabel)
                         .onTapGesture {
                             print("tapped item view")
                         }

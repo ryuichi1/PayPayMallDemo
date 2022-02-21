@@ -21,6 +21,7 @@
 		0DD5C83527C3F6F700F8D994 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5C83127C3F6F700F8D994 /* SecondView.swift */; };
 		0DD5C83827C3F6F700F8D994 /* ItemRankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5C83327C3F6F700F8D994 /* ItemRankingListView.swift */; };
 		0DD5C83927C3F6F700F8D994 /* ItemRankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD5C83327C3F6F700F8D994 /* ItemRankingListView.swift */; };
+		0DD5C84027C3FBF900F8D994 /* BuildTools in Resources */ = {isa = PBXBuildFile; fileRef = 0DD5C83F27C3FBF900F8D994 /* BuildTools */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0DD5C81B27C3F6D500F8D994 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		0DD5C83127C3F6F700F8D994 /* SecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		0DD5C83327C3F6F700F8D994 /* ItemRankingListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRankingListView.swift; sourceTree = "<group>"; };
+		0DD5C83F27C3FBF900F8D994 /* BuildTools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildTools; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		0DD5C7EF27C3F6D400F8D994 = {
 			isa = PBXGroup;
 			children = (
+				0DD5C83F27C3FBF900F8D994 /* BuildTools */,
 				0DD5C7F427C3F6D500F8D994 /* Shared */,
 				0DD5C80327C3F6D500F8D994 /* macOS */,
 				0DD5C80C27C3F6D500F8D994 /* Tests iOS */,
@@ -160,6 +163,7 @@
 				0DD5C7F927C3F6D500F8D994 /* Frameworks */,
 				0DD5C7FA27C3F6D500F8D994 /* Resources */,
 				0DD5C83E27C3FA8500F8D994 /* Swift Format */,
+				0DD5C84127C3FC8700F8D994 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -276,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DD5C82127C3F6D500F8D994 /* Assets.xcassets in Resources */,
+				0DD5C84027C3FBF900F8D994 /* BuildTools in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +326,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
+		0DD5C84127C3FC8700F8D994 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n \n# Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\n# swift package update\n \ncp $SRCROOT/.swiftlint.yml ./\nswift run -c release swiftlint --path ../Shared\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
